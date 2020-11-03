@@ -1,11 +1,12 @@
 package io.github.kimmking.gateway.outbound.okhttp;
 
+
 import okhttp3.*;
 
 import java.io.IOException;
 // Okhttp 请求客户端 使用3个异步执行观察
 public class HttpClient {
-    public void main(String[] args){
+    public static void main(String[] args){
         OkHttpClient okHttpClient = new OkHttpClient();
         Request request = new Request.Builder().url("http://localhost:8888").build();
         System.out.println("start:fetchGet3");

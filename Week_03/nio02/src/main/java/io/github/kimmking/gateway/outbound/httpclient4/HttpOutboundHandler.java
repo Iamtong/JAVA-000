@@ -1,6 +1,7 @@
 package io.github.kimmking.gateway.outbound.httpclient4;
 
 
+import com.alibaba.fastjson.JSONObject;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -96,9 +97,11 @@ public class HttpOutboundHandler {
             //打印线下
             System.out.println(new String(body));
             //直接替换掉数据，直接显示 hello,Tong
-            String value = "hello,Tong";
-            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
-            response.headers().set("Content-Type", "html/text");
+            //String value = "{\"hello,Tong\"}";
+            JSONObject object = new JSONObject();
+            object.put("string",new String(body));
+            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(object.toJSONString().getBytes("UTF-8")));
+            response.headers().set("Content-Type", "application/json");
             response.headers().setInt("Content-Length", response.content().readableBytes());
     
     /*
