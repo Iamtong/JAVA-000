@@ -1,0 +1,5 @@
+mybatis:
+  configuration:
+spring:
+  profiles:
+    active: test   # 选择加载文件application-{test}.yml
