@@ -26,11 +26,12 @@ public class UserService {
         }
         return i;
     }
+
     public User getUserById(int id){
         return userMapper.getUserById(id);
     }
 
-    public List<User> userList(int start,int limit){
+    public List<User> getUserList(int start,int limit){
         return userMapper.findAll(0,start,limit);
     }
 

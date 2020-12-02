@@ -61,7 +61,6 @@ public class DynamicDataSourceContextHolder {
      */
     public static void useSlaveDataSource() {
         lock.lock();
-
         try {
             int datasourceKeyIndex = counter % slaveDataSourceKeys.size();
             CONTEXT_HOLDER.set(String.valueOf(slaveDataSourceKeys.get(datasourceKeyIndex)));

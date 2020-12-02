@@ -8,7 +8,8 @@ import java.util.function.Supplier;
 
 public enum DataSourceKey implements Supplier {
     master,
-    slave;
+    slave1,
+    slave2;
 
     @Override
     public Object get() {

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class DynamicDataSourceAspect {
     private static final Logger logger = LoggerFactory.getLogger(DynamicDataSourceAspect.class);
 
-    private final String[] QUERY_PREFIX = {"select"};
+    private final String[] QUERY_PREFIX = {"select","get"};
 
     @Pointcut("execution( * com.tong.mall.mapper.*.*(..))")
     public void mapperAspect() {
@@ -43,6 +43,7 @@ public class DynamicDataSourceAspect {
 
     private Boolean isQueryMethod(String methodName) {
         for (String prefix : QUERY_PREFIX) {
+            logger.info(methodName);
             if (methodName.startsWith(prefix)) {
                 return true;
             }

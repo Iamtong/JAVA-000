@@ -25,18 +25,25 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
-    @Bean("slave")
-    @ConfigurationProperties(prefix = "spring.datasource.slave")
-    public HikariDataSource slave(){
+    @Bean("slave1")
+    @ConfigurationProperties(prefix = "spring.datasource.slave1")
+    public HikariDataSource slave1(){
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
+    }
+
+    @Bean("slave2")
+    @ConfigurationProperties(prefix = "spring.datasource.slave2")
+    public HikariDataSource slave2(){
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
     @Bean("dynamicDataSource")
     public DynamicRoutingDataSource dynamicDataSource() {
         DynamicRoutingDataSource dynamicRoutingDataSource = new DynamicRoutingDataSource();
-        Map<Object, Object> dataSourceMap = new HashMap<>(2);
+        Map<Object, Object> dataSourceMap = new HashMap<>(3);
         dataSourceMap.put(DataSourceKey.master.name(), master());
-        dataSourceMap.put(DataSourceKey.slave.name(), slave());
+        dataSourceMap.put(DataSourceKey.slave1.name(), slave1());
+        dataSourceMap.put(DataSourceKey.slave2.name(), slave2());
 
         // 将 master 数据源作为默认指定的数据源
         dynamicRoutingDataSource.setDefaultTargetDataSource(master());
