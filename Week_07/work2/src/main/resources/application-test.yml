@@ -1,0 +1,30 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+spring:
+  datasource:
+    master: !!org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3307/mall?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password:
+    slave1: !!org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3308/mall?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password:
+    slave2: !!org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3309/mall?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password:
+
+mybatis:
+  type-aliases-package: com.tong.mall.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+
+
